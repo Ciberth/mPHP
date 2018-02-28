@@ -6,4 +6,5 @@ options:
       - php-mcrypt
       - libapache2-mod-php
 
-includes: ['layer:basic', 'layer:apache-php', 'interface:http', 'interface:mysql']
+includes: ['layer:basic', 'layer:apache-php','layer:apt', 'interface:http', 'interface:mysql']
+repo: https://github.com/Ciberth/mphp.git
