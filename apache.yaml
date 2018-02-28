@@ -4,4 +4,4 @@ sites:
   mphp:
     server_name: '{config["hostname"]}'
     install_from:
-      source: https://
+      source: https://github.com/Ciberth/mPHP/raw/master/mphp.tar.gz
