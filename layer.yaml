@@ -1,0 +1,9 @@
+options:
+  apt:
+    packages:
+      - php
+      - php-mysql
+      - php-mcrypt
+      - libapache2-mod-php
+
+includes: ['layer:basic', 'layer:apache-php', 'interface:http', 'interface:mysql']

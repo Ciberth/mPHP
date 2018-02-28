@@ -1,0 +1,42 @@
+import os
+
+from charms.reactive import set_flag, clear_flag, when, when_not, when_any
+from charms.reactive.relations import endpoint_from_flag
+from charms.reactive.helpers import data_changed
+
+from charmhelpers.core.hookenv import status_set, log, config
+from charmhelpers.core import templating, unitdata
+
+config = config()
+
+# Install apache
+
+@when_not('apache.available')
+def install():
+    install_apache()
+    install_site()
+    hookenv.status_set('maintenance', 'setting up apache')
+    reactive.set_state('apache.available')
+
+def install_apache():
+    config = hookenv.config()
+    hookenv.status_set('maintenance', 'Installing packages')
+    packages = ['apache2', 'php', 'libapache2-mod-php', 'php-mcrypt', 'php-mysql']
+    fetch.apt_install(fetch.filter_installed_packages(packages))
+    host.service_stop('apache2')
+    check_call(['a2dissite', '000-default'])
+    hookenv.open_port(config['port'])
+
+def install_site():
+    hookenv.status_set('maintenance', 'Installing default site')
+    dest = '/var/www/html/
+
+# Install mPHP
+
+@when('apache.available', 'database.available')
+@when_not('mPHP.installed')
+def install_mPHP():
+    # Copy files
+    templating.render('config.php', '/var/www/html/config.php')
+    status_set('active', 'ready')
+    set_state('mPHP.installed')

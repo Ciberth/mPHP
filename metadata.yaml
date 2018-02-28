@@ -1,0 +1,14 @@
+name: mPHP
+summary: Small test to learn charms. Apache + php + mysql 
+maintainer: Ciberth
+description: |
+  Small test to learn charms, it deploys an apache server with php and copies some pages from the template directory. The charm requires a mysql and provides a website interface.
+tags:
+  - web_server
+subordinate: false
+provides:
+  website:
+    interface: http
+requires:
+  db:
+    interface: mysql

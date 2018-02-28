@@ -1,0 +1,7 @@
+packages:
+  - 'php-mysql'
+sites:
+  mphp:
+    server_name: '{config["hostname"]}'
+    install_from:
+      source: https://
