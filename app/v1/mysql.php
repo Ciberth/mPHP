@@ -3,7 +3,7 @@
 require 'mysql_configure.php';
 
 $db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
-$databasename = "mtest";
+$databasename = DB_NAME;
 $db_found = mysqli_select_db($db_handle, $databasename);
 
 if($db_found) {
