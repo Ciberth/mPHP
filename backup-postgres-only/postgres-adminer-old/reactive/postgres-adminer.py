@@ -33,8 +33,9 @@ def check_admin_pass():
 
 @when('pgsqldb.master.available', 'admin-pass')
 def render_config(pgsql):
-    render('pgsql-config.j2', '/var/www/pgsql/pgsqlconf.html', {
+    render_template('pgsql-config.j2', '/var/www/pgsql/pgsqlconf.html', {
         'db_master': pgsql.master,
+        'db_version': pgsql.version,
         'db_standbys': pgsql.standbys,
         'db_conn': pgsql.connection_string,
         'admin_pass': config('admin-pass'),
