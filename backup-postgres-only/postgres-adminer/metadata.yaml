@@ -1,0 +1,14 @@
+name: postgres-adminer
+summary: Few Php pages + adminer.php on apache layer + postgresql. 
+maintainer: student <student@student-VirtualBox>
+description: |
+  Todo 
+tags:
+  - ops
+subordinate: false
+provides:
+  website:
+    interface: http
+requires:
+  pgsqldb:
+    interface: pgsql
